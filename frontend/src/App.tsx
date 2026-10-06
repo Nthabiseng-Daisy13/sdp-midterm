@@ -106,7 +106,7 @@ function RepoView() {
       <header className="shrink-0 border-b border-base-600/50 bg-base-900/95">
         <div className="flex flex-wrap items-center gap-3 px-5 py-3">
           <div className="min-w-0">
-            <h1 className="truncate text-lg font-bold leading-tight">{repo.name}</h1>
+            <h1 className="truncate text-xl font-bold leading-tight tracking-tight">{repo.name}</h1>
             <div className="flex items-center gap-1.5 text-[11px] text-ink-faint">
               {repo.source.type === 'clone' ? (
                 <GitBranch className="h-3 w-3 shrink-0" />
@@ -133,10 +133,10 @@ function RepoView() {
           {tabs.map((t) => (
             <button
               key={t.id}
-              className={`flex items-center gap-1.5 border-b-2 px-3 py-2 text-sm font-medium transition-colors ${
+              className={`flex items-center gap-1.5 border-b-2 px-3 py-2 text-sm transition-colors ${
                 tab === t.id
-                  ? 'border-churn text-ink'
-                  : 'border-transparent text-ink-faint hover:text-ink-muted'
+                  ? 'border-churn font-semibold text-ink'
+                  : 'border-transparent font-medium text-ink-faint hover:text-ink-muted'
               }`}
               onClick={() => setTab(t.id)}
             >

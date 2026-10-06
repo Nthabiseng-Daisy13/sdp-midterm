@@ -49,11 +49,11 @@ export function fmtSigned(n: number): string {
   return n > 0 ? `+${fmtNum(n)}` : fmtNum(n)
 }
 
-/** Stable color for an author key. */
+/** Stable color for an author key (tones chosen to stay readable on the light theme). */
 const PALETTE = [
-  '#38bdf8', '#34d399', '#fbbf24', '#fb7185', '#a78bfa', '#f472b6',
-  '#4ade80', '#22d3ee', '#facc15', '#fb923c', '#818cf8', '#2dd4bf',
-  '#e879f9', '#93c5fd', '#fda4af', '#86efac',
+  '#C2255C', '#047857', '#B45309', '#BE123C', '#A21CAF', '#2563EB',
+  '#0D9488', '#7C3AED', '#CA8A04', '#EA580C', '#4F46E5', '#0891B2',
+  '#DB2777', '#65A30D', '#9333EA', '#DC2626',
 ]
 
 export function authorColor(key: string): string {
@@ -72,14 +72,14 @@ export function initials(name: string): string {
 
 /** Split "first" and extension for the file badge colour. */
 const EXT_COLORS: Record<string, string> = {
-  py: '#4ade80', js: '#fbbf24', ts: '#38bdf8', tsx: '#38bdf8', jsx: '#fbbf24',
-  c: '#818cf8', h: '#818cf8', cpp: '#818cf8', rs: '#fb923c', go: '#22d3ee',
-  java: '#fb7185', rb: '#fb7185', md: '#a8b3c5', json: '#facc15', yml: '#a8b3c5',
-  yaml: '#a8b3c5', toml: '#a8b3c5', sh: '#86efac', html: '#fb7185', css: '#a78bfa',
-  sql: '#22d3ee', lock: '#5b6b84', txt: '#8194ad',
+  py: '#059669', js: '#D97706', ts: '#2563EB', tsx: '#2563EB', jsx: '#D97706',
+  c: '#4F46E5', h: '#4F46E5', cpp: '#4F46E5', rs: '#EA580C', go: '#0891B2',
+  java: '#BE123C', rb: '#BE123C', md: '#7C5568', json: '#CA8A04', yml: '#7C5568',
+  yaml: '#7C5568', toml: '#7C5568', sh: '#65A30D', html: '#BE123C', css: '#A21CAF',
+  sql: '#0891B2', lock: '#8A6376', txt: '#7C5568',
 }
 
 export function extColor(name: string): string {
   const ext = name.includes('.') ? name.split('.').pop()!.toLowerCase() : ''
-  return EXT_COLORS[ext] ?? '#8194ad'
+  return EXT_COLORS[ext] ?? '#7C5568'
 }

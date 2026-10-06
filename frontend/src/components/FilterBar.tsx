@@ -104,7 +104,7 @@ export function FilterBar({ totalCommits }: { totalCommits: number | null }) {
                     >
                       <span
                         className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border ${
-                          checked ? 'border-churn bg-churn text-base-900' : 'border-base-500'
+                          checked ? 'border-churn bg-churn text-white' : 'border-base-500'
                         }`}
                       >
                         {checked && <Check className="h-3 w-3" />}

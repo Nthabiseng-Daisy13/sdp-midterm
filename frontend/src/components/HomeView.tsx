@@ -43,9 +43,9 @@ export function HomeView({
     <div className="flex-1 overflow-y-auto">
       <div className="mx-auto max-w-5xl px-6 py-10">
         {/* Hero */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold tracking-tight">Repo Analysis Tool</h1>
-          <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-ink-muted">
+        <div className="hero-gradient mb-8 rounded-2xl border border-base-600/60 px-6 py-6 shadow-panel">
+          <h1 className="text-3xl font-bold tracking-tight">Repo Analysis Tool</h1>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
             Add a repository — by remote URL or a zip containing its{' '}
             <span className="font-mono text-ink">.git</span> directory — and explore file, directory,
             repository, commit-set and author metrics: added/removed lines, growth, churn,
@@ -193,8 +193,8 @@ function RepoCard({
 function CardStat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wider text-ink-faint">{label}</div>
-      <div className="tabular-nums">{value}</div>
+      <div className="text-[11px] font-medium uppercase tracking-wider text-ink-faint">{label}</div>
+      <div className="text-sm font-semibold tabular-nums">{value}</div>
     </div>
   )
 }

@@ -187,13 +187,13 @@ export function CommitsTab() {
                     <button
                       className="flex h-4 w-4 items-center justify-center rounded border transition-colors"
                       style={{
-                        borderColor: pageAllChecked ? '#38bdf8' : '#2b3a55',
-                        background: pageAllChecked ? '#38bdf8' : 'transparent',
+                        borderColor: pageAllChecked ? '#C2255C' : '#D9BE94',
+                        background: pageAllChecked ? '#C2255C' : 'transparent',
                       }}
                       title="Select all commits on this page"
                       onClick={togglePage}
                     >
-                      {pageAllChecked && <Check className="h-3 w-3 text-base-900" />}
+                      {pageAllChecked && <Check className="h-3 w-3 text-white" />}
                     </button>
                   </th>
                   <th className="th">Hash</th>
@@ -218,13 +218,13 @@ export function CommitsTab() {
                         <button
                           className="flex h-4 w-4 items-center justify-center rounded border transition-colors"
                           style={{
-                            borderColor: checked ? '#38bdf8' : '#2b3a55',
-                            background: checked ? '#38bdf8' : 'transparent',
+                            borderColor: checked ? '#C2255C' : '#D9BE94',
+                            background: checked ? '#C2255C' : 'transparent',
                           }}
                           onClick={() => toggleHash(c.hash)}
                           aria-label={checked ? 'Deselect commit' : 'Select commit'}
                         >
-                          {checked && <Check className="h-3 w-3 text-base-900" />}
+                          {checked && <Check className="h-3 w-3 text-white" />}
                         </button>
                       </td>
                       <td className="td font-mono text-[13px] text-churn">{c.short}</td>

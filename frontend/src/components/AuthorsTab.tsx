@@ -303,13 +303,13 @@ function AuthorRows({
           <button
             className="flex h-4 w-4 items-center justify-center rounded border transition-colors"
             style={{
-              borderColor: checked ? '#a78bfa' : '#2b3a55',
-              background: checked ? '#a78bfa' : 'transparent',
+              borderColor: checked ? '#A21CAF' : '#D9BE94',
+              background: checked ? '#A21CAF' : 'transparent',
             }}
             onClick={onToggleSelect}
             aria-label={checked ? 'Deselect author' : 'Select author'}
           >
-            {checked && <Check className="h-3 w-3 text-base-900" />}
+            {checked && <Check className="h-3 w-3 text-white" />}
           </button>
         </td>
         <td className="td">

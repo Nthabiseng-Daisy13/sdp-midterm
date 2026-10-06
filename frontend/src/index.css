@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
@@ -18,18 +18,27 @@ body {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'tnum';
 }
 
+::selection {
+  background: #f6c6d8;
+}
+
 /* Slim scrollbars that match the theme */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #2b3a55 transparent;
+  scrollbar-color: #e0b0c2 transparent;
 }
 *::-webkit-scrollbar {
   width: 9px;
   height: 9px;
 }
 *::-webkit-scrollbar-thumb {
-  background: #22304a;
+  background: #e0b0c2;
   border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #d296ae;
   border: 2px solid transparent;
   background-clip: content-box;
 }
@@ -37,20 +46,20 @@ body {
   background: transparent;
 }
 
-/* Native datetime/selection controls on dark background */
+/* Native datetime/selection controls on the light background */
 input[type='datetime-local'] {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 @layer components {
   .panel {
-    @apply rounded-xl border border-base-600/60 bg-base-800/70 shadow-panel;
+    @apply rounded-xl border border-base-600/70 bg-base-800 shadow-panel;
   }
   .btn {
     @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
-    @apply btn bg-churn/90 text-base-900 hover:bg-churn;
+    @apply btn bg-churn text-white shadow-sm hover:bg-churn-deep;
   }
   .btn-ghost {
     @apply btn text-ink-muted hover:bg-base-700/70 hover:text-ink;
@@ -59,29 +68,36 @@ input[type='datetime-local'] {
     @apply btn text-removed hover:bg-removed/10;
   }
   .input {
-    @apply rounded-lg border border-base-600/70 bg-base-850 px-2.5 py-1.5 text-sm text-ink placeholder:text-ink-faint focus:border-churn/60 focus:outline-none focus:ring-1 focus:ring-churn/40;
+    @apply rounded-lg border border-base-600 bg-base-850/70 px-2.5 py-1.5 text-sm text-ink placeholder:text-ink-faint focus:border-churn/60 focus:outline-none focus:ring-1 focus:ring-churn/40;
   }
   .chip {
-    @apply inline-flex items-center gap-1 rounded-full border border-base-500/60 bg-base-700/60 px-2 py-0.5 text-xs text-ink-muted;
+    @apply inline-flex items-center gap-1 rounded-full border border-base-500/60 bg-base-700/70 px-2 py-0.5 text-xs text-ink-muted;
   }
   .th {
-    @apply select-none whitespace-nowrap px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wider text-ink-faint;
+    @apply select-none whitespace-nowrap px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-ink-muted;
   }
   .td {
-    @apply whitespace-nowrap px-3 py-1.5 text-sm;
+    @apply whitespace-nowrap px-3 py-2 text-sm;
   }
   .row-hover {
-    @apply transition-colors hover:bg-base-700/40;
+    @apply transition-colors hover:bg-base-700/50;
   }
 }
 
-/* recharts dark theming */
+/* Soft pink/yellow wash behind the landing-page hero */
+.hero-gradient {
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(226, 90, 140, 0.13) 0%, rgba(226, 90, 140, 0) 55%),
+    radial-gradient(120% 140% at 100% 0%, rgba(245, 197, 84, 0.22) 0%, rgba(245, 197, 84, 0) 60%);
+}
+
+/* recharts light theming */
 .recharts-cartesian-axis-tick text {
-  fill: #8194ad;
-  font-size: 11px;
+  fill: #8a6376;
+  font-size: 12px;
 }
 .recharts-cartesian-grid line {
-  stroke: #1f2c42;
+  stroke: #efdfc0;
 }
 .recharts-tooltip-wrapper {
   outline: none;

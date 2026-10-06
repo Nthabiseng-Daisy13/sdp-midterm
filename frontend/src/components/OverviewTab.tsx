@@ -118,7 +118,7 @@ export function OverviewTab() {
 
       <div className={`grid gap-4 ${isFile ? '' : 'xl:grid-cols-5'}`}>
         {!isFile && (
-          <section className="panel xl:col-span-3">
+          <section className="panel overflow-hidden xl:col-span-3">
             <PanelHeader
               title={path ? `Contents of ${path}` : 'Repository contents'}
               right={<span className="text-xs text-ink-faint">{data.children.length} entries</span>}
@@ -132,7 +132,7 @@ export function OverviewTab() {
           </section>
         )}
 
-        <section className={`panel ${isFile ? '' : 'xl:col-span-2'}`}>
+        <section className={`panel overflow-hidden ${isFile ? '' : 'xl:col-span-2'}`}>
           <PanelHeader title="Authors" right={<span className="text-xs text-ink-faint">click to filter</span>} />
           <AuthorTable
             authors={data.authors}
@@ -150,7 +150,7 @@ export function OverviewTab() {
       </div>
 
       {!isFile && data.top_files.length > 0 && (
-        <section className="panel">
+        <section className="panel overflow-hidden">
           <PanelHeader
             title="Top churned files"
             right={<span className="text-xs text-ink-faint">across all directories · top 50</span>}
@@ -219,9 +219,9 @@ function StatCard({
 }) {
   return (
     <div className="panel px-3.5 py-3">
-      <div className="text-[11px] font-semibold uppercase tracking-wider text-ink-faint">{label}</div>
-      <div className={`mt-1 text-xl font-semibold tabular-nums ${valueClass ?? 'text-ink'}`}>{value}</div>
-      {sub && <div className="mt-0.5 truncate text-[11px] text-ink-faint" title={sub}>{sub}</div>}
+      <div className="text-xs font-semibold uppercase tracking-wider text-ink-faint">{label}</div>
+      <div className={`mt-1 text-2xl font-semibold tracking-tight tabular-nums ${valueClass ?? 'text-ink'}`}>{value}</div>
+      {sub && <div className="mt-0.5 truncate text-xs text-ink-faint" title={sub}>{sub}</div>}
     </div>
   )
 }
@@ -252,9 +252,9 @@ function TimelinePanel({ data }: { data: MetricsResponse }) {
   const maxLines = Math.max(...buckets.map((b) => Math.max(b.added, b.removed)), 1)
 
   const toggles: { label: string; color: string; on: boolean; set: (v: boolean) => void }[] = [
-    { label: 'Added', color: '#34d399', on: showAdded, set: setShowAdded },
-    { label: 'Removed', color: '#fb7185', on: showRemoved, set: setShowRemoved },
-    { label: 'Commits', color: '#38bdf8', on: showCommits, set: setShowCommits },
+    { label: 'Added', color: '#047857', on: showAdded, set: setShowAdded },
+    { label: 'Removed', color: '#BE123C', on: showRemoved, set: setShowRemoved },
+    { label: 'Commits', color: '#C2255C', on: showCommits, set: setShowCommits },
   ]
 
   return (
@@ -292,22 +292,22 @@ function TimelinePanel({ data }: { data: MetricsResponse }) {
             <ComposedChart data={buckets} margin={{ top: 6, right: 4, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="tlAdded" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#34d399" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="#34d399" stopOpacity={0.02} />
+                  <stop offset="0%" stopColor="#047857" stopOpacity={0.35} />
+                  <stop offset="100%" stopColor="#047857" stopOpacity={0.03} />
                 </linearGradient>
                 <linearGradient id="tlRemoved" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#fb7185" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="#fb7185" stopOpacity={0.02} />
+                  <stop offset="0%" stopColor="#BE123C" stopOpacity={0.35} />
+                  <stop offset="100%" stopColor="#BE123C" stopOpacity={0.03} />
                 </linearGradient>
               </defs>
-              <CartesianGrid stroke="#1f2c42" vertical={false} />
+              <CartesianGrid stroke="#efdfc0" vertical={false} />
               <XAxis
                 dataKey="t"
                 type="number"
                 domain={['dataMin', 'dataMax']}
                 tickFormatter={xFmt}
                 tickLine={false}
-                axisLine={{ stroke: '#1f2c42' }}
+                axisLine={{ stroke: '#e8d3af' }}
                 minTickGap={56}
               />
               <YAxis
@@ -332,8 +332,8 @@ function TimelinePanel({ data }: { data: MetricsResponse }) {
                   yAxisId="commits"
                   dataKey="commits"
                   name="commits"
-                  fill="#38bdf8"
-                  fillOpacity={0.14}
+                  fill="#C2255C"
+                  fillOpacity={0.25}
                   radius={[2, 2, 0, 0]}
                 />
               )}
@@ -342,8 +342,8 @@ function TimelinePanel({ data }: { data: MetricsResponse }) {
                   yAxisId="lines"
                   dataKey="added"
                   name="added"
-                  stroke="#34d399"
-                  strokeWidth={1.5}
+                  stroke="#047857"
+                  strokeWidth={2}
                   fill="url(#tlAdded)"
                 />
               )}
@@ -352,8 +352,8 @@ function TimelinePanel({ data }: { data: MetricsResponse }) {
                   yAxisId="lines"
                   dataKey="removed"
                   name="removed"
-                  stroke="#fb7185"
-                  strokeWidth={1.5}
+                  stroke="#BE123C"
+                  strokeWidth={2}
                   fill="url(#tlRemoved)"
                 />
               )}
@@ -389,11 +389,11 @@ function TimelineTooltip({
   return (
     <div className="rounded-lg border border-base-500/80 bg-base-850/95 px-3 py-2 text-xs shadow-xl backdrop-blur">
       <div className="mb-1 font-semibold">{fmtDateTime(t)} UTC</div>
-      <Row label="Added" value={fmtInt(added)} color="#34d399" />
-      <Row label="Removed" value={fmtInt(removed)} color="#fb7185" />
-      <Row label="Growth" value={fmtSigned(added - removed)} color="#fbbf24" />
-      <Row label="Churn" value={fmtInt(added + removed)} color="#38bdf8" />
-      <Row label="Commits" value={fmtInt(commits)} color="#8194ad" />
+      <Row label="Added" value={fmtInt(added)} color="#047857" />
+      <Row label="Removed" value={fmtInt(removed)} color="#BE123C" />
+      <Row label="Growth" value={fmtSigned(added - removed)} color="#B45309" />
+      <Row label="Churn" value={fmtInt(added + removed)} color="#C2255C" />
+      <Row label="Commits" value={fmtInt(commits)} color="#7C5568" />
     </div>
   )
 }
@@ -475,7 +475,7 @@ function ChildrenTable({
               <td className="td">
                 <span className="flex items-center gap-2">
                   <span className="w-14 text-right tabular-nums">{fmtInt(c.churn)}</span>
-                  <MiniBar value={c.churn} max={maxChurn} color="#38bdf8" className="flex-1" />
+                  <MiniBar value={c.churn} max={maxChurn} color="#C2255C" className="flex-1" />
                 </span>
               </td>
               <td className="td text-right tabular-nums text-added">{c.touched ? fmtInt(c.added) : '—'}</td>
@@ -545,7 +545,7 @@ function TopFilesTable({
               <td className="td">
                 <span className="flex items-center gap-2">
                   <span className="w-14 text-right tabular-nums">{fmtInt(f.churn)}</span>
-                  <MiniBar value={f.churn} max={maxChurn} color="#38bdf8" className="flex-1" />
+                  <MiniBar value={f.churn} max={maxChurn} color="#C2255C" className="flex-1" />
                 </span>
               </td>
               <td className="td text-right tabular-nums text-added">{fmtInt(f.added)}</td>
