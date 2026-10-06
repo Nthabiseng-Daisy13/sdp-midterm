@@ -1,36 +1,5 @@
 # RAT — Repo Analysis Tool
 
-A web dashboard that makes git repositories transparent: who has impact where, which
-parts of a project are the most volatile, and how the codebase evolved over time.
-RAT ingests repositories (zip upload or deep clone from a URL), computes the file,
-directory, repository, commit-set and author metrics defined in the COMS3011A
-specification, and presents them in a filterable multi-repository dashboard.
-
-![Overview](docs/screenshots/overview.png)
-
-## Features
-
-- **Repository ingestion, two ways**
-  - Upload a **zip** of a repository (with its `.git` directory, or a bare-repo zip)
-  - **Clone a remote URL** (http(s), git://, ssh://, scp-style) with full history
-  - Ingestion runs as a background job with a live progress log
-- **Multiple repositories** live side by side, each with independent state
-- **Author merging**
-  - Git `.mailmap` support is automatic (resolved at parse time)
-  - Manual merging of any identities via the Authors tab, with undo
-- **All metric categories** — file, directory, repository (root), commit set and
-  author metrics, exactly as specified (see [Metrics](#metrics))
-- **Filtering** by repository, author(s), file/directory (click-through navigation),
-  a time window (`H_t`, `H_{i,j}`), or a **manually selected list of commits**
-- **Reference commit switching** — re-index a repository at any commit hash
-- Shareable URLs — the full dashboard state (repo, tab, path, filters) lives in the URL hash
-
-| Home | Commits | Authors |
-| --- | --- | --- |
-| ![Home](docs/screenshots/home.png) | ![Commits](docs/screenshots/commits.png) | ![Authors](docs/screenshots/authors.png) |
-| Timeline chart | Directory drill-down | |
-| ![Timeline](docs/screenshots/timeline.png) | ![Directory](docs/screenshots/directory.png) | |
-
 ## Quickstart
 
 Requirements: Python 3.11+, Node.js 18+, npm, git.
@@ -64,6 +33,41 @@ For frontend development with hot reload, also run `npm run dev` inside `fronten
 
 Runtime state (clones, parsed caches, metadata) is kept in `data/` (git-ignored).
 Set `RAT_DATA_DIR` to relocate it.
+
+---
+
+## Overview
+
+A web dashboard that makes git repositories transparent: who has impact where, which
+parts of a project are the most volatile, and how the codebase evolved over time.
+RAT ingests repositories (zip upload or deep clone from a URL), computes the file,
+directory, repository, commit-set and author metrics defined in the COMS3011A
+specification, and presents them in a filterable multi-repository dashboard.
+
+![Overview](docs/screenshots/overview.png)
+
+## Features
+
+- **Repository ingestion, two ways**
+  - Upload a **zip** of a repository (with its `.git` directory, or a bare-repo zip)
+  - **Clone a remote URL** (http(s), git://, ssh://, scp-style) with full history
+  - Ingestion runs as a background job with a live progress log
+- **Multiple repositories** live side by side, each with independent state
+- **Author merging**
+  - Git `.mailmap` support is automatic (resolved at parse time)
+  - Manual merging of any identities via the Authors tab, with undo
+- **All metric categories** — file, directory, repository (root), commit set and
+  author metrics, exactly as specified (see [Metrics](#metrics))
+- **Filtering** by repository, author(s), file/directory (click-through navigation),
+  a time window (`H_t`, `H_{i,j}`), or a **manually selected list of commits**
+- **Reference commit switching** — re-index a repository at any commit hash
+- Shareable URLs — the full dashboard state (repo, tab, path, filters) lives in the URL hash
+
+| Home | Commits | Authors |
+| --- | --- | --- |
+| ![Home](docs/screenshots/home.png) | ![Commits](docs/screenshots/commits.png) | ![Authors](docs/screenshots/authors.png) |
+| Timeline chart | Directory drill-down | |
+| ![Timeline](docs/screenshots/timeline.png) | ![Directory](docs/screenshots/directory.png) | |
 
 ## Architecture
 
