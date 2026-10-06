@@ -1,0 +1,88 @@
+@import '@fontsource-variable/inter';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-base-900 text-ink antialiased;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'tnum';
+}
+
+/* Slim scrollbars that match the theme */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2b3a55 transparent;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #22304a;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Native datetime/selection controls on dark background */
+input[type='datetime-local'] {
+  color-scheme: dark;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-base-600/60 bg-base-800/70 shadow-panel;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-churn/90 text-base-900 hover:bg-churn;
+  }
+  .btn-ghost {
+    @apply btn text-ink-muted hover:bg-base-700/70 hover:text-ink;
+  }
+  .btn-danger {
+    @apply btn text-removed hover:bg-removed/10;
+  }
+  .input {
+    @apply rounded-lg border border-base-600/70 bg-base-850 px-2.5 py-1.5 text-sm text-ink placeholder:text-ink-faint focus:border-churn/60 focus:outline-none focus:ring-1 focus:ring-churn/40;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-base-500/60 bg-base-700/60 px-2 py-0.5 text-xs text-ink-muted;
+  }
+  .th {
+    @apply select-none whitespace-nowrap px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wider text-ink-faint;
+  }
+  .td {
+    @apply whitespace-nowrap px-3 py-1.5 text-sm;
+  }
+  .row-hover {
+    @apply transition-colors hover:bg-base-700/40;
+  }
+}
+
+/* recharts dark theming */
+.recharts-cartesian-axis-tick text {
+  fill: #8194ad;
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: #1f2c42;
+}
+.recharts-tooltip-wrapper {
+  outline: none;
+}

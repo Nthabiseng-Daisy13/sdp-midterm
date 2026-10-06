@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/tsconfig.tsbuildinfo
+
+# RAT runtime data (clones, caches, uploads)
+data/
+
+# Local scratch (dev validation runs, screenshots, logs)
+.scratch/
+
+# Editors / OS
+.DS_Store
+*.swp
