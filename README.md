@@ -28,8 +28,8 @@ specification, and presents them in a filterable multi-repository dashboard.
 | Home | Commits | Authors |
 | --- | --- | --- |
 | ![Home](docs/screenshots/home.png) | ![Commits](docs/screenshots/commits.png) | ![Authors](docs/screenshots/authors.png) |
-| Directory drill-down | Filtered (author + selection) | |
-| ![Directory](docs/screenshots/directory.png) | ![Filters](docs/screenshots/filters.png) | |
+| Timeline chart | Directory drill-down | |
+| ![Timeline](docs/screenshots/timeline.png) | ![Directory](docs/screenshots/directory.png) | |
 
 ## Quickstart
 
@@ -171,7 +171,7 @@ in-memory aggregations over the pickle.
 | Criterion | Coverage |
 | --- | --- |
 | Requirements (50%) | All metric categories implemented and independently validated on cJSON/Redis/Git; **both** zip and URL ingestion; **all of** filtering (repo, author, path, time window, manual commit list), author merging (mailmap + manual, undoable), multi-repo support |
-| Architecture & UI (25%) | Parse-once architecture with cached single-pass aggregation (see above); dark analytic dashboard: metric cards, add/remove/growth area chart with auto-granularity timeline, sortable tables, click-through directory navigation, author ownership bars, live ingestion progress |
+| Architecture & UI (25%) | Parse-once architecture with cached single-pass aggregation (see above); **"Strawberry & Cream" light theme** — pale-yellow surfaces, plum text, pink accents with ≥4.5:1 contrast; metric cards, add/remove/growth area chart with auto-granularity timeline, sortable tables, click-through directory navigation, author ownership bars, live ingestion progress |
 | Usability (25%) | Shareable filtered URLs, live job progress + logs, toasts and inline error handling, searchable/paginated commit list with select-all-page, zip-slip and upload validation, keyboard-free flows, good performance on a 61k-commit repository |
 
 ## AI Declaration
