@@ -33,7 +33,17 @@ specification, and presents them in a filterable multi-repository dashboard.
 
 ## Quickstart
 
-Requirements: Python 3.11+, Node.js 18+, git.
+Requirements: Python 3.11+, Node.js 18+, npm, git.
+
+### One command
+
+```bash
+chmod +x start.sh
+./start.sh
+# → installs deps, builds the frontend, starts the server at http://localhost:8000
+```
+
+### Manual steps (equivalent)
 
 ```bash
 # 1. Backend (FastAPI)
